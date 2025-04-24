@@ -21,17 +21,17 @@ const AppContextProvider = props => {
 
   return (
         <AppContext.Provider value={{
-          loading: loading,
-          setLoading: setLoading,
-          error: error,
-          setError: setError,
-          ready: ready,
-          setReady: setReady,
-          validationErrors: validationErrors,
-          setValidationErrors: setValidationErrors,
-          loginErrors: loginErrors,
-          setLoginErrors: setLoginErrors,
-          processError: processError
+          loading,
+          setLoading,
+          error,
+          setError,
+          ready,
+          setReady,
+          validationErrors,
+          setValidationErrors,
+          loginErrors,
+          setLoginErrors,
+          processError
         }}
         >
             {props.children}

@@ -11,6 +11,7 @@ import ImageCard from '../../components/ImageCard'
 import { MaterialCommunityIcons } from '@expo/vector-icons' // import necesario para Pressable
 import * as GlobalStyles from '../../styles/GlobalStyles' // import necesario para Pressable
 import DeleteModal from '../../components/DeleteModal'
+import Constants from 'expo-constants'
 
 export default function OrdersScreen ({ navigation, route }) {
   const [orders, setOrders] = useState([])
@@ -18,6 +19,11 @@ export default function OrdersScreen ({ navigation, route }) {
   const { loggedInUser } = useContext(AuthorizationContext)
 
   // FR5: Listing my confirmed orders. A Customer will be able to check his/her confirmed orders, sorted from the most recent to the oldest.
+
+  const API_BASE_URL =
+  Constants.expoConfig?.extra?.API_BASE_URL ??
+  Constants.manifest?.extra?.API_BASE_URL ??
+  'http://localhost:8081'
 
   useEffect(() => {
     async function fetchOrders () {
@@ -45,11 +51,16 @@ export default function OrdersScreen ({ navigation, route }) {
 
     return (
       <ImageCard
-        imageUri={item.restaurant.logo ? { uri: process.env.API_BASE_URL + '/' + item.restaurant.logo } : undefined}
-        onPress={() => {
-          navigation.navigate('OrderDetailScreen', { id: item.id, dirty: true })
-        }}
-      >
+  imageUri={
+    item.restaurant && item.restaurant.logo
+      ? { uri: `${API_BASE_URL}/${item.restaurant.logo}` }
+      : undefined
+  }
+  onPress={() => {
+    navigation.navigate('OrderDetailScreen', { id: item.id, dirty: true })
+  }}
+>
+
         { isEditable && (
         <Pressable
         onPress={() => navigation.navigate('EditOrderScreen', { id: item.id })}

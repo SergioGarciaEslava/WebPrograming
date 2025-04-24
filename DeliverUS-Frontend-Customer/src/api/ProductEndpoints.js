@@ -12,5 +12,4 @@ function getAllProducts () {
   return get('products')
 }
 
-
 export { getProductCategories, getPopular, getAllProducts }

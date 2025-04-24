@@ -1,3 +1,5 @@
+
+
 {
   "expo": {
     "name": "IISSI2-IS-Frontend-Customer",
@@ -5,6 +7,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -27,6 +30,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "API_BASE_URL": "http://localhost:8081" 
     }
   }
 }

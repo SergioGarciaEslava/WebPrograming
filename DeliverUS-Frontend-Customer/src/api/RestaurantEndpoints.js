@@ -7,7 +7,7 @@ function getDetail (id) {
   return get(`restaurants/${id}`)
 }
 
-function getRestaurants(){
+function getRestaurants () {
   return get('restaurants')
 }
 
